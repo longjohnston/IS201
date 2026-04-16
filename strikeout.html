@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baseball Game</title>
+
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        background-color: #e6f2ff;
+    }
+
+    h1 {
+        color: #0b3d91;
+    }
+
+    .field {
+        margin: 20px auto;
+        width: 200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+    .base {
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        margin: auto;
+        background-color: white;
+    }
+
+    .filled {
+        background-color: green;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #message {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>⚾ Baseball Game</h1>
+<p>Score 5 runs before 3 outs!</p>
+
+<div class="field">
+    <div></div>
+    <div id="second" class="base"></div>
+    <div></div>
+    <div id="third" class="base"></div>
+    <div></div>
+    <div id="first" class="base"></div>
+</div>
+
+<button onclick="swing()">Swing</button>
+<button onclick="take()">Take</button>
+
+<div id="message"></div>
+<div id="score">Runs: 0 | Strikes: 0 | Outs: 0</div>
+
+<br>
+<a href="fromscratch.html">Back to Baseball Page</a>
+
+<script>
+let first = false;
+let second = false;
+let third = false;
+
+let strikes = 0;
+let outs = 0;
+let runs = 0;
+
+function updateBases() {
+    document.getElementById("first").className = "base" + (first ? " filled" : "");
+    document.getElementById("second").className = "base" + (second ? " filled" : "");
+    document.getElementById("third").className = "base" + (third ? " filled" : "");
+}
+
+function updateScore() {
+    document.getElementById("score").innerText =
+        "Runs: " + runs + " | Strikes: " + strikes + " | Outs: " + outs;
+}
+
+function checkGame() {
+    if (runs >= 5) {
+        document.body.innerHTML = "<h1>🎉 YOU WIN!</h1><p>You scored 5 runs!</p><a href='strikeout.html'>Play Again</a>";
+    }
+
+    if (outs >= 3) {
+        document.body.innerHTML = "<h1>❌ GAME OVER</h1><p>You didn’t score enough runs.</p><a href='strikeout.html'>Try Again</a>";
+    }
+}
+
+function walk() {
+    if (first && second && third) {
+        runs++;
+    }
+
+    if (second && first) {
+        third = true;
+    }
+
+    if (first) {
+        second = true;
+    }
+
+    first = true;
+}
+
+function hit() {
+    if (third) runs++;
+    if (second) runs++;
+    if (first) runs++;
+
+    first = true;
+    second = false;
+    third = false;
+}
+
+function swing() {
+    let random = Math.random();
+
+    if (random < 0.5) {
+        document.getElementById("message").innerText = "🔥 HIT!";
+        hit();
+        strikes = 0;
+    } else {
+        strikes++;
+        document.getElementById("message").innerText = "❌ STRIKE!";
+    }
+
+    if (strikes >= 3) {
+        outs++;
+        strikes = 0;
+        document.getElementById("message").innerText = "🚫 STRIKEOUT!";
+    }
+
+    updateBases();
+    updateScore();
+    checkGame();
+}
+
+function take() {
+    let random = Math.random();
+
+    if (random < 0.5) {
+        document.getElementById("message").innerText = "⚾ BALL!";
+        walk();
+    } else {
+        strikes++;
+        document.getElementById("message").innerText = "❌ CALLED STRIKE!";
+    }
+
+    if (strikes >= 3) {
+        outs++;
+        strikes = 0;
+        document.getElementById("message").innerText = "🚫 STRIKEOUT!";
+    }
+
+    updateBases();
+    updateScore();
+    checkGame();
+}
+</script>
+
+</body>
+</html>

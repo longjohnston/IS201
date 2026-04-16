@@ -15,7 +15,8 @@
 
     <!-- NAVIGATION -->
     <a href="index.html">Back to Professional Site</a> |
-    <a href="#video">Go to Video</a>
+    <a href="#video">Go to Video</a> |
+    <a href="strikeout.html">Play Web App</a>
 
     <!-- DIV 1 -->
     <div class="section">
@@ -43,8 +44,8 @@
             <li>How I stay involved today:
                 <ul>
                     <li>Watching Dodgers games regularly</li>
-                    <li>Participating in fantasy baseball leagues</li>
-                    <li>Analyzing player performance and matchups</li>
+                    <li>Fantasy baseball leagues</li>
+                    <li>Analyzing player performance</li>
                 </ul>
             </li>
         </ol>
@@ -54,21 +55,18 @@
     <div class="section">
         <h2>Los Angeles Dodgers</h2>
 
-        <!-- FIXED IMAGE -->
-        <img src="../startbootstrap-clean-blog-gh-pages/assets/img/dodgerstadium.jpg"
-     width="500"
-     alt="Dodger Stadium"
-     style="display:block; margin:auto;">
-     <br>
-     <br>
-     <br>
-     <br>
+        <!-- IMAGE (FIXED PATH) -->
+        <img src="assets/img/dodgerstadium.jpg"
+             width="500"
+             alt="Dodger Stadium"
+             style="display:block; margin:auto;">
+
         <p>
             The Dodgers have always been my favorite team. Going to Dodger Stadium was a huge part of my childhood.
         </p>
     </div>
 
-    <!-- DIV 3 (VIDEO + ANCHOR TARGET) -->
+    <!-- DIV 3 -->
     <div class="section" id="video">
         <h2>Dodgers Highlights</h2>
 
@@ -80,28 +78,34 @@
         </iframe>
     </div>
 
-    <!-- DIV 4 (TABLEAU FIXED - RUBRIC SAFE) -->
+    <!-- TABLEAU SECTION (FIXED + CLEAN) -->
     <div class="section">
         <h2>Baseball Data Visualization</h2>
 
-        <div class='tableauPlaceholder' id='viz1745000000000' style='position: relative'>
+        <div class='tableauPlaceholder' id='viz1776312450016' style='position: relative'>
+
             <noscript>
                 <a href='#'>
-                    <img alt='MLB Stats'
-                         src='https://public.tableau.com/static/images/ML/MLBPlayerStats/MLBStats/1.png'
+                    <img alt='Tableau Visualization'
+                         src='https://public.tableau.com/static/images/Su/SuperSampleSuperstore/SuperDescriptive/1_rss.png'
                          style='border: none' />
                 </a>
             </noscript>
 
             <object class='tableauViz' style='display:none;'>
+
                 <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
                 <param name='embed_code_version' value='3' />
                 <param name='site_root' value='' />
-                <param name='name' value='MLBPlayerStats/MLBStats' />
-                <param name='tabs' value='no' />
+
+                <param name='name' value='SuperSampleSuperstore/SuperDescriptive' />
+
+                <param name='tabs' value='yes' />
                 <param name='toolbar' value='yes' />
+
                 <param name='static_image'
-                       value='https://public.tableau.com/static/images/ML/MLBPlayerStats/MLBStats/1.png' />
+                       value='https://public.tableau.com/static/images/Su/SuperSampleSuperstore/SuperDescriptive/1.png' />
+
                 <param name='animate_transition' value='yes' />
                 <param name='display_static_image' value='yes' />
                 <param name='display_spinner' value='yes' />
@@ -111,18 +115,22 @@
             </object>
         </div>
 
+        <!-- SINGLE TABLEAU SCRIPT (IMPORTANT FIX) -->
         <script type='text/javascript'
                 src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
 
-        <p>
-            I enjoy analyzing player stats, which is also why I like fantasy baseball and following performance trends.
-        </p>
-    </div>
+        <!-- PROPER SIZING SCRIPT -->
+        <script>
+            var divElement = document.getElementById('viz1776312450016');
+            var vizElement = divElement.getElementsByTagName('object')[0];
 
-    <!-- DIV 5 (WEB APP LINK - REQUIRED) -->
-    <div class="section">
-        <h2>Baseball Game</h2>
-        <a href="strikeout.html">Play My Baseball Game</a>
+            vizElement.style.width = '100%';
+            vizElement.style.height = '600px';
+        </script>
+
+        <p>
+            This visualization explores business and performance trends using Tableau Public data. My baseball Tableu would not load, so I figured I would share my knowledge of embedding Tableu than have nothing at all.
+        </p>
     </div>
 
     <!-- BACK TO TOP -->
